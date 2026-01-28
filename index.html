@@ -190,7 +190,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
             /* Increased max-width for wider boxes */
-            max-width: 650px;
+            max-width: 900px;
         }
 
         .timeline-job-card::before {
@@ -656,20 +656,11 @@
             }
         }
 
-	/* ============================================
-   COMPLETE PORTFOLIO FIXES
-   Copy this entire CSS to your main stylesheet
-   ============================================ */
 
-/* 1. REMOVE WHITE SPACE BETWEEN SECTIONS */
-body {
-    margin: 0;
-    padding: 0;
-}
+    </style>
 
-section {
-    margin: 0 !important;
-}
+
+	<style>
 
 /* Remove gap between About and Experience */
 .timeline-wrapper {
@@ -717,98 +708,8 @@ section {
     background: #1a202c !important;
 }
 
-/* 4. ADD GAP BETWEEN EXPERIENCE AND PROJECTS */
-.projects-container {
-    padding-top: 80px; /* Space from experience section */
-}
 
-.section-title {
-    margin-top: 0;
-    margin-bottom: 60px;
-}
-
-/* 5. USE DEFAULT WEBSITE FONT FOR PROJECTS */
-.projects-container,
-.project-card,
-.project-title,
-.section-title,
-.project-section-title,
-.project-list,
-.project-impact {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-}
-
-/* Remove Google Fonts if they were added */
-.section-title {
-    font-family: inherit !important;
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-
-.project-title {
-    font-family: inherit !important;
-    font-size: 1.6rem;
-    font-weight: 700;
-}
-
-/* ============================================
-   ADDITIONAL IMPROVEMENTS
-   ============================================ */
-
-/* Ensure all sections have consistent spacing */
-section {
-    padding: 0 !important;
-}
-
-/* Projects section full background */
-body {
-    background: linear-gradient(135deg, 
-        rgba(255, 182, 193, 0.3) 0%,
-        rgba(173, 216, 230, 0.3) 25%,
-        rgba(221, 160, 221, 0.3) 50%,
-        rgba(255, 218, 185, 0.3) 75%,
-        rgba(176, 224, 230, 0.3) 100%
-    );
-}
-
-/* Remove any conflicting padding */
-.container.mb-8.mb-lg-13 {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* ============================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================ */
-
-@media (max-width: 768px) {
-    .timeline-wrapper {
-        padding-bottom: 60px;
-    }
-    
-    .projects-container {
-        padding-top: 60px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .projects-container {
-        padding-top: 50px;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    
-    .section-title {
-        font-size: 1.7rem;
-    }
-}
-    </style>
+	</style>
 
   </head>
 
