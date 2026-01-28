@@ -431,7 +431,6 @@
         }
     </style>
     <title>Analytical Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -656,6 +655,159 @@
                 font-size: 0.95rem;
             }
         }
+
+	/* ============================================
+   COMPLETE PORTFOLIO FIXES
+   Copy this entire CSS to your main stylesheet
+   ============================================ */
+
+/* 1. REMOVE WHITE SPACE BETWEEN SECTIONS */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    margin: 0 !important;
+}
+
+/* Remove gap between About and Experience */
+.timeline-wrapper {
+    margin-top: 0 !important;
+    padding-top: 80px;
+    padding-bottom: 100px; /* Add space before projects */
+}
+
+/* 2. WIDER PROFESSIONAL EXPERIENCE CARDS */
+.timeline-job-card {
+    max-width: 750px !important; /* Increased from 650px */
+}
+
+@media (max-width: 1024px) {
+    .timeline-job-card {
+        max-width: 650px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-job-card {
+        max-width: 100% !important;
+    }
+}
+
+/* 3. LIGHT BLUE BACKGROUND FOR CORE COMPETENCIES */
+/* Add ID or class to your skills section: id="skills" or class="skills-section" */
+#skills,
+.skills-section {
+    background: linear-gradient(135deg, 
+        rgba(173, 216, 230, 0.4) 0%,
+        rgba(176, 224, 230, 0.4) 25%,
+        rgba(173, 216, 230, 0.3) 50%,
+        rgba(221, 160, 221, 0.2) 75%,
+        rgba(173, 216, 230, 0.4) 100%
+    ) !important;
+    padding: 80px 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Keep the dark card inside skills section */
+#skills .card.bg-dark,
+.skills-section .card.bg-dark {
+    background: #1a202c !important;
+}
+
+/* 4. ADD GAP BETWEEN EXPERIENCE AND PROJECTS */
+.projects-container {
+    padding-top: 80px; /* Space from experience section */
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+
+/* 5. USE DEFAULT WEBSITE FONT FOR PROJECTS */
+.projects-container,
+.project-card,
+.project-title,
+.section-title,
+.project-section-title,
+.project-list,
+.project-impact {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* Remove Google Fonts if they were added */
+.section-title {
+    font-family: inherit !important;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.project-title {
+    font-family: inherit !important;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* ============================================
+   ADDITIONAL IMPROVEMENTS
+   ============================================ */
+
+/* Ensure all sections have consistent spacing */
+section {
+    padding: 0 !important;
+}
+
+/* Projects section full background */
+body {
+    background: linear-gradient(135deg, 
+        rgba(255, 182, 193, 0.3) 0%,
+        rgba(173, 216, 230, 0.3) 25%,
+        rgba(221, 160, 221, 0.3) 50%,
+        rgba(255, 218, 185, 0.3) 75%,
+        rgba(176, 224, 230, 0.3) 100%
+    );
+}
+
+/* Remove any conflicting padding */
+.container.mb-8.mb-lg-13 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .timeline-wrapper {
+        padding-bottom: 60px;
+    }
+    
+    .projects-container {
+        padding-top: 60px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-container {
+        padding-top: 50px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.7rem;
+    }
+}
     </style>
 
   </head>
