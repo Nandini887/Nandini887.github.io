@@ -24,15 +24,29 @@
     <link href="assets/css/theme.min.css" rel="stylesheet" id="style-default">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 
-        <style>
-        /* Self-contained CSS - no external dependencies */
+    <style>
+        /* Self-contained CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         .timeline-wrapper {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 80px 20px;
+            /* Light gradient background matching your About page */
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.3) 0%,
+                rgba(173, 216, 230, 0.3) 25%,
+                rgba(221, 160, 221, 0.3) 50%,
+                rgba(255, 218, 185, 0.3) 75%,
+                rgba(176, 224, 230, 0.3) 100%
+            );
+            padding: 80px 0;
             position: relative;
             overflow: hidden;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            width: 100%;
         }
 
         .timeline-wrapper::before {
@@ -42,25 +56,27 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
             pointer-events: none;
         }
 
         .timeline-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            padding: 0 40px;
         }
 
         .timeline-main-title {
             font-size: 3rem;
             font-weight: 700;
-            color: white;
+            color: #2d3748;
             text-align: center;
             margin: 0 0 80px 0;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             animation: fadeInDown 0.8s ease-out;
         }
 
@@ -71,12 +87,12 @@
             bottom: 0;
             width: 3px;
             background: linear-gradient(to bottom, 
-                rgba(255, 255, 255, 0.8) 0%,
-                rgba(255, 255, 255, 0.4) 50%,
-                rgba(255, 255, 255, 0.1) 100%
+                rgba(102, 126, 234, 0.6) 0%,
+                rgba(102, 126, 234, 0.4) 50%,
+                rgba(102, 126, 234, 0.2) 100%
             );
             transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
         }
 
         .timeline-items-list {
@@ -105,9 +121,10 @@
             width: 28px;
             height: 28px;
             background: white;
-            border: 4px solid #f093fb;
+            border: 4px solid #667eea;
             border-radius: 50%;
-            box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2), 0 0 20px rgba(240, 147, 251, 0.6);
+            box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.2),
+                        0 0 20px rgba(102, 126, 234, 0.4);
             z-index: 2;
             animation: pulse 2s infinite;
         }
@@ -116,7 +133,7 @@
             display: flex;
             align-items: flex-start;
             gap: 30px;
-            padding: 0 40px;
+            padding: 0 20px;
         }
 
         .timeline-single-item:nth-child(odd) .timeline-content-area {
@@ -132,20 +149,21 @@
         }
 
         .timeline-company-logo {
-            min-width: 80px;
-            width: 80px;
-            height: 60px;
+            min-width: 90px;
+            width: 90px;
+            height: 70px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
             color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             animation: float 3s ease-in-out infinite;
             position: relative;
             z-index: 1;
+            flex-shrink: 0;
         }
 
         .logo-google {
@@ -162,14 +180,17 @@
         }
 
         .timeline-job-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 35px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             flex: 1;
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            /* Increased max-width for wider boxes */
+            max-width: 650px;
         }
 
         .timeline-job-card::before {
@@ -179,7 +200,7 @@
             top: 0;
             bottom: 0;
             width: 5px;
-            background: linear-gradient(to bottom, #667eea, #f093fb);
+            background: linear-gradient(to bottom, #667eea, #764ba2);
         }
 
         .timeline-single-item:nth-child(even) .timeline-job-card::before {
@@ -189,7 +210,7 @@
 
         .timeline-job-card:hover {
             transform: translateX(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
         }
 
         .timeline-single-item:nth-child(even) .timeline-job-card:hover {
@@ -206,11 +227,12 @@
         }
 
         .timeline-job-name {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #2d3748;
             margin: 0;
             line-height: 1.3;
+            flex: 1;
         }
 
         .timeline-date-badge {
@@ -218,22 +240,23 @@
             color: #667eea;
             font-weight: 600;
             white-space: nowrap;
-            background: rgba(102, 126, 234, 0.1);
-            padding: 6px 14px;
+            background: rgba(102, 126, 234, 0.15);
+            padding: 8px 16px;
             border-radius: 20px;
+            flex-shrink: 0;
         }
 
         .timeline-company-name {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #718096;
-            margin: 0 0 15px 0;
+            margin: 0 0 16px 0;
             font-weight: 500;
         }
 
         .timeline-job-desc {
             font-size: 1rem;
-            line-height: 1.7;
-            color: #2d3748;
+            line-height: 1.8;
+            color: #4a5568;
             margin: 0 0 20px 0;
         }
 
@@ -246,7 +269,7 @@
         .timeline-skill-badge {
             display: inline-block;
             padding: 8px 16px;
-            background: linear-gradient(135deg, #667eea, #f093fb);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -258,7 +281,7 @@
         .timeline-skill-badge:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            background: linear-gradient(135deg, #f093fb, #667eea);
+            background: linear-gradient(135deg, #764ba2, #667eea);
         }
 
         @keyframes fadeInDown {
@@ -274,10 +297,12 @@
 
         @keyframes pulse {
             0%, 100% {
-                box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2), 0 0 20px rgba(240, 147, 251, 0.6);
+                box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.2),
+                            0 0 20px rgba(102, 126, 234, 0.4);
             }
             50% {
-                box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.1), 0 0 30px rgba(240, 147, 251, 0.8);
+                box-shadow: 0 0 0 12px rgba(102, 126, 234, 0.1),
+                            0 0 30px rgba(102, 126, 234, 0.6);
             }
         }
 
@@ -290,9 +315,20 @@
             }
         }
 
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .timeline-container {
+                padding: 0 30px;
+            }
+            
+            .timeline-job-card {
+                max-width: 550px;
+            }
+        }
+
         @media (max-width: 768px) {
             .timeline-main-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
                 margin-bottom: 50px;
             }
 
@@ -319,6 +355,45 @@
             }
 
             .timeline-company-logo {
+                min-width: 70px;
+                width: 70px;
+                height: 55px;
+                font-size: 16px;
+            }
+
+            .logo-expeditors {
+                font-size: 12px;
+            }
+
+            .timeline-job-card {
+                padding: 25px 30px;
+                max-width: 100%;
+            }
+
+            .timeline-job-name {
+                font-size: 1.4rem;
+            }
+
+            .timeline-single-item {
+                margin-bottom: 60px;
+            }
+
+            .timeline-container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-wrapper {
+                padding: 50px 0;
+            }
+
+            .timeline-main-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+
+            .timeline-company-logo {
                 min-width: 60px;
                 width: 60px;
                 height: 50px;
@@ -330,53 +405,259 @@
             }
 
             .timeline-job-card {
-                padding: 20px;
+                padding: 20px 25px;
             }
 
             .timeline-job-name {
                 font-size: 1.3rem;
             }
 
-            .timeline-single-item {
-                margin-bottom: 50px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .timeline-wrapper {
-                padding: 50px 15px;
-            }
-
-            .timeline-main-title {
-                font-size: 1.6rem;
-                margin-bottom: 40px;
-            }
-
-            .timeline-company-logo {
-                min-width: 50px;
-                width: 50px;
-                height: 45px;
-                font-size: 12px;
-            }
-
-            .logo-expeditors {
-                font-size: 10px;
-            }
-
-            .timeline-job-card {
-                padding: 18px;
-            }
-
-            .timeline-job-name {
-                font-size: 1.2rem;
+            .timeline-job-desc {
+                font-size: 0.95rem;
             }
 
             .timeline-skill-badge {
                 font-size: 0.8rem;
                 padding: 6px 12px;
             }
+
+            .timeline-content-area {
+                gap: 15px;
+            }
+
+            .timeline-container {
+                padding: 0 15px;
+            }
         }
     </style>
+    <title>Analytical Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.3) 0%,
+                rgba(173, 216, 230, 0.3) 25%,
+                rgba(221, 160, 221, 0.3) 50%,
+                rgba(255, 218, 185, 0.3) 75%,
+                rgba(176, 224, 230, 0.3) 100%
+            );
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-header {
+            margin-bottom: 25px;
+        }
+
+        .project-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .project-date {
+            font-size: 0.95rem;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .project-details {
+            /* Left column */
+        }
+
+        .project-section-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+
+        .project-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 25px;
+        }
+
+        .project-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            color: #4a5568;
+        }
+
+        .project-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .project-impact {
+            margin-top: 25px;
+        }
+
+        .project-impact p {
+            line-height: 1.7;
+            color: #4a5568;
+        }
+
+        .project-visual {
+            /* Right column */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+
+            .project-card {
+                padding: 30px 25px;
+            }
+
+            .project-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            .project-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 40px 15px;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .project-card {
+                padding: 25px 20px;
+            }
+
+            .project-title {
+                font-size: 1.3rem;
+            }
+
+            .project-section-title {
+                font-size: 1rem;
+            }
+
+            .project-list li {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+
   </head>
 
   <body>
@@ -405,7 +686,7 @@
                   <div class="col-lg-6 text-center text-lg-start">
                     <h1 class="fs-2 fs-lg-1 text-black fw-bold mb-lg-x1 lh-base mt-3 mt-lg-0">Nandini Anand Kumar</h1>
                     <p class="fs-8 text-black mb-3 mb-lg-4 lh-lg">From questions to insights to impact—that’s my workflow.
-My journey isn’t linear—it’s layered. From engineering foundations at Hewlett Packard Enterprise to analytics-driven problem solving at Expeditors International, and now advanced analytics through my MS in Business Analytics at University of Texas at Austin and applied work with Google, each step has shaped how I turn complex data into actionable insights. Along the way, I’ve worked with large-scale datasets, SQL-driven analysis, ETL validation, and dashboards—collaborating closely with product, engineering, and business teams to solve ambiguous problems under tight timelines. What motivates me most is using data to improve products and experiences by asking the right questions, challenging assumptions, and translating insights into real-world impact. </p>                    
+My journey isn’t linear—it’s layered. From engineering foundations at Hewlett Packard Enterprise to analytics-driven problem solving at Expeditors International, and now advanced analytics through my MS in Business Analytics at University of Texas at Austin and applied work with Google, each step has shaped how I turn complex data into actionable insights.  </p>                    
                     <div class="col-auto pe-0 ms-md-n3 ms-sm-n3"><a class="icons fs-4 me-3 me-md-0 ms-md-3 cursor-pointer" target='_blank' href="https://www.linkedin.com/in/nandini-anand-0168b4205/"><span class="uil uil-linkedin"> </span></a><a class="icons fs-4 me-3 me-md-0 ms-md-3 cursor-pointer" href="https://github.com/Nandini887" target='_blank'><span class="uil uil-github"></span></a><a class="icons fs-4 me-3 me-md-0 ms-md-3 cursor-pointer" href="mailto:nandinianand@utexas.edu" target='_blank'><span class="uil uil-envelope"> </span></a><a class="icons fs-4 me-3 me-md-0 ms-md-3 cursor-pointer" href="assets/files/Nandini_Anand_Kumar_Resume_DA.pdf" target='_blank'><span class="uil uil-file"> </span></a></div>
                   </div>
                     <div class="col-lg-6 position-lg-relative">
@@ -437,120 +718,125 @@ My journey isn’t linear—it’s layered. From engineering foundations at Hewl
           </section -->
           <!-- ================= PROFESSIONAL EXPERIENCE ================= -->
           <section class="container mb-8 mb-lg-11" id="experience">
-            <div class="timeline-wrapper">
-                <div class="timeline-container">
-                    <h1 class="timeline-main-title">Professional Experience</h1>
-                    
-                    <div class="timeline-vertical-line"></div>
-                    
-                    <div class="timeline-items-list">
-                        
-                        <!-- Google Data Scientist -->
-                        <div class="timeline-single-item">
-                            <div class="timeline-circle"></div>
-                            <div class="timeline-content-area">
-                                <div class="timeline-company-logo logo-google">
-                                    <span>Google</span>
-                                </div>
-                                <div class="timeline-job-card">
-                                    <div class="timeline-card-top">
-                                        <h3 class="timeline-job-name">Data Scientist Intern</h3>
-                                        <span class="timeline-date-badge">Jan 2025 – Present</span>
-                                    </div>
-                                    <p class="timeline-company-name">Google</p>
-                                    <p class="timeline-job-desc">
-                                        Building an end-to-end computer vision pipeline on GCP to detect and classify workplace safety incidents from video data.
-                                        Leveraging Vertex AI–hosted LLMs with RAG to generate incident summaries and preliminary root cause insights, improving incident triage</p>
-                                    <div class="timeline-skills-list">
-                                        <span class="timeline-skill-badge">Computer Vision</span>
-                                        <span class="timeline-skill-badge">Vertex AI</span>
-                                        <span class="timeline-skill-badge">GCP</span>
-                                        <span class="timeline-skill-badge">RAG</span>
-                                    </div>
-                                </div>
+    <div class="timeline-wrapper">
+        <div class="timeline-container">
+            <h1 class="timeline-main-title">Professional Experience</h1>
+            
+            <div class="timeline-vertical-line"></div>
+            
+            <div class="timeline-items-list">
+                
+                <!-- Google Data Scientist -->
+                <div class="timeline-single-item">
+                    <div class="timeline-circle"></div>
+                    <div class="timeline-content-area">
+                        <div class="timeline-company-logo logo-google">
+                            <span>G</span>
+                        </div>
+                        <div class="timeline-job-card">
+                            <div class="timeline-card-top">
+                                <h3 class="timeline-job-name">Data Scientist Intern</h3>
+                                <span class="timeline-date-badge">Jan 2025 – Present</span>
+                            </div>
+                            <p class="timeline-company-name">Google</p>
+                            <p class="timeline-job-desc">
+                                Building an end-to-end computer vision pipeline on GCP to detect and classify workplace safety incidents from video data. Leveraging Vertex AI-hosted LLMs with RAG to generate incident summaries and preliminary root cause insights, improving incident triage.
+                            </p>
+                            <div class="timeline-skills-list">
+                                <span class="timeline-skill-badge">Computer Vision</span>
+                                <span class="timeline-skill-badge">Vertex AI</span>
+                                <span class="timeline-skill-badge">Python</span>
+                                <span class="timeline-skill-badge">GCP</span>
                             </div>
                         </div>
-        
-                        <!-- Business Analyst -->
-                        <div class="timeline-single-item">
-                            <div class="timeline-circle"></div>
-                            <div class="timeline-content-area">
-                                <div class="timeline-company-logo logo-expeditors">
-                                    <span>Expeditors</span>
-                                </div>
-                                <div class="timeline-job-card">
-                                    <div class="timeline-card-top">
-                                        <h3 class="timeline-job-name">Business Analyst II</h3>
-                                        <span class="timeline-date-badge">2024 – 2025</span>
-                                    </div>
-                                    <p class="timeline-company-name">Expeditors International</p>
-                                    <p class="timeline-job-desc">
-                                        Led end-to-end analytics initiatives by partnering with global stakeholders to translate complex ERP and business requirements into scalable data solutions. Designed and delivered ETL workflows, SQL and Python-based data models, and Snowflake-powered Tableau dashboards to monitor operational KPIs and improve visibility across 33+ countries. Owned solution quality through stakeholder-driven UAT, reducing post-release defects, while also mentoring analysts and leading agile ceremonies to improve team productivity and data governance.
-                                    </p>
-                                    <div class="timeline-skills-list">
-                                        <span class="timeline-skill-badge">SQL</span>
-                                        <span class="timeline-skill-badge">Data Analytics</span>
-                                        <span class="timeline-skill-badge">Business Intelligence</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <!-- Associate Business Analyst -->
-                        <div class="timeline-single-item">
-                            <div class="timeline-circle"></div>
-                            <div class="timeline-content-area">
-                                <div class="timeline-company-logo logo-expeditors">
-                                    <span>Expeditors</span>
-                                </div>
-                                <div class="timeline-job-card">
-                                    <div class="timeline-card-top">
-                                        <h3 class="timeline-job-name">Associate Business Analyst</h3>
-                                        <span class="timeline-date-badge">2022 – 2024</span>
-                                    </div>
-                                    <p class="timeline-company-name">Expeditors International</p>
-                                    <p class="timeline-job-desc">
-                                      Improved logistics and customs IT workflows by analyzing and cleaning complex operational data, uncovering inefficiencies through EDA, and translating insights into clearer solution documentation. Automated and optimized SQL and Python-based reporting workflows to reduce manual effort and improve operational efficiency.  
-                                    </p>
-                                    <div class="timeline-skills-list">
-                                        <span class="timeline-skill-badge">Supply Chain Analytics</span>
-                                        <span class="timeline-skill-badge">EDA</span>
-                                        <span class="timeline-skill-badge">Dashboards</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <!-- Cloud Engineer Intern -->
-                        <div class="timeline-single-item">
-                            <div class="timeline-circle"></div>
-                            <div class="timeline-content-area">
-                                <div class="timeline-company-logo logo-hpe">
-                                    <span>HPE</span>
-                                </div>
-                                <div class="timeline-job-card">
-                                    <div class="timeline-card-top">
-                                        <h3 class="timeline-job-name">Cloud Engineer</h3>
-                                        <span class="timeline-date-badge">2021 – 2022</span>
-                                    </div>
-                                    <p class="timeline-company-name">Hewlett Packard Enterprise</p>
-                                    <p class="timeline-job-desc">
-                                        Worked on cloud infrastructure automation using Azure, Terraform, and Ansible, supporting server migration and improving deployment reliability in restricted cloud environments.
-                                    </p>
-                                    <div class="timeline-skills-list">
-                                        <span class="timeline-skill-badge">Python</span>
-                                        <span class="timeline-skill-badge">AWS</span>
-                                        <span class="timeline-skill-badge">Azure</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-        
                     </div>
                 </div>
+
+                <!-- Business Analyst II -->
+                <div class="timeline-single-item">
+                    <div class="timeline-circle"></div>
+                    <div class="timeline-content-area">
+                        <div class="timeline-company-logo logo-expeditors">
+                            <span>EXP</span>
+                        </div>
+                        <div class="timeline-job-card">
+                            <div class="timeline-card-top">
+                                <h3 class="timeline-job-name">Business Analyst II</h3>
+                                <span class="timeline-date-badge">2024 – 2025</span>
+                            </div>
+                            <p class="timeline-company-name">Expeditors International</p>
+                            <p class="timeline-job-desc">
+                                Led end-to-end analytics initiatives by partnering with global stakeholders to translate complex ERP and business requirements into scalable data solutions. Designed and delivered ETL workflows, SQL and Python-based data models, and Snowflake-powered Tableau dashboards to monitor operational KPIs and improve visibility across 33+ countries. Owned solution quality through stakeholder-driven UAT, reducing post-release defects, while also mentoring analysts and leading agile ceremonies to improve team productivity and data governance.
+                            </p>
+                            <div class="timeline-skills-list">
+                                <span class="timeline-skill-badge">SQL</span>
+                                <span class="timeline-skill-badge">Python</span>
+                                <span class="timeline-skill-badge">Snowflake</span>
+                                <span class="timeline-skill-badge">Tableau</span>
+                                <span class="timeline-skill-badge">ETL</span>
+                                <span class="timeline-skill-badge">Agile</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Associate Business Analyst -->
+                <div class="timeline-single-item">
+                    <div class="timeline-circle"></div>
+                    <div class="timeline-content-area">
+                        <div class="timeline-company-logo logo-expeditors">
+                            <span>EXP</span>
+                        </div>
+                        <div class="timeline-job-card">
+                            <div class="timeline-card-top">
+                                <h3 class="timeline-job-name">Associate Business Analyst</h3>
+                                <span class="timeline-date-badge">2022 – 2024</span>
+                            </div>
+                            <p class="timeline-company-name">Expeditors International</p>
+                            <p class="timeline-job-desc">
+                                Supported large-scale analytics initiatives across customs, compliance, and ERP systems, delivering insights and reports that improved stakeholder decision-making and reporting efficiency. Collaborated with cross-functional teams to validate data integrity and optimize reporting processes.
+                            </p>
+                            <div class="timeline-skills-list">
+                                <span class="timeline-skill-badge">Analytics</span>
+                                <span class="timeline-skill-badge">Compliance</span>
+                                <span class="timeline-skill-badge">ERP Systems</span>
+                                <span class="timeline-skill-badge">Data Validation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Engineer Intern -->
+                <div class="timeline-single-item">
+                    <div class="timeline-circle"></div>
+                    <div class="timeline-content-area">
+                        <div class="timeline-company-logo logo-hpe">
+                            <span>HPE</span>
+                        </div>
+                        <div class="timeline-job-card">
+                            <div class="timeline-card-top">
+                                <h3 class="timeline-job-name">Cloud Engineer Intern</h3>
+                                <span class="timeline-date-badge">2021 – 2022</span>
+                            </div>
+                            <p class="timeline-company-name">Hewlett Packard Enterprise</p>
+                            <p class="timeline-job-desc">
+                                Worked on cloud infrastructure automation using Azure, Terraform, and Ansible, supporting server migration and improving deployment reliability in restricted cloud environments. Contributed to infrastructure-as-code practices and automated deployment workflows.
+                            </p>
+                            <div class="timeline-skills-list">
+                                <span class="timeline-skill-badge">Azure</span>
+                                <span class="timeline-skill-badge">Terraform</span>
+                                <span class="timeline-skill-badge">Ansible</span>
+                                <span class="timeline-skill-badge">DevOps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-         </section>
-      <script>
+        </div>
+    </div>
+
+    <script>
         // Scroll animation
         const observerOptions = {
             threshold: 0.2,
@@ -575,182 +861,158 @@ My journey isn’t linear—it’s layered. From engineering foundations at Hewl
         });
     </script>
 
-    
-
-    
      
-          <section class="container mb-8 mb-lg-13" id="projects">
+    <section class="container mb-8 mb-lg-13" id="projects">
 
 
             <!-- project 1 final starts here-->  
-            <div class="col-md-12 col-lg-12 pb-2">
-              <h3 class="fs-4 fs-lg-3 fw-bold text-center mb-2 mb-lg-x1">Analytical Projects</h3>
+    <div class="projects-container">
+        <h1 class="section-title">Analytical Projects</h1>
+
+        <!-- Project 1 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">Medical Review Data Warehouse & AI Analytics</h2>
+                <p class="project-date">December 2025</p>
             </div>
-            <div class="row align-items-center">
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <h2 class="fs-4 fs-lg-5 fw-bold mb-2 text-center text-lg-start">Medical Review Data Warehouse & AI Analytics</h2>
-                <h5 class="fs-8 fw-bold lh-lg mb-1">December 2025</h5>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-5">
-                <div class="row justify-content-center justify-content-lg-start">
-                  <div class="col-12">
-                    <div class="mb-x1 mb-lg-3">
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Project Milestones</h5>
-                      <p class="mb-0 lh-xl">
-                        <ul>
-                          <li>Problem Assessment: Addressed fragmented Independent Medical Review (IMR) data and limited analytical visibility into overturn trends, fairness, and demographic disparities across medical decisions.</li>
-
-                          <li>Data Preparation: Ingested and consolidated 19K+ IMR records, performing data cleaning, validation, and structuring to create a reliable foundation for downstream analytics.</li>
-
-                          <li>Data Modeling & ETL: Designed star-schema data models and automated ETL pipelines using the Snowflake Medallion Architecture (Bronze, Silver, Gold) to enable scalable and auditable analytics.</li>
-
-                          <li>AI & Advanced Analytics: Applied Snowflake Cortex AI to enrich unstructured clinical text through sentiment analysis, summarization, and semantic search, transforming narrative medical reviews into actionable insights.</li>
-
-                          <li>>Visualization & Insights: Developed interactive Streamlit dashboards to visualize overturn trends, demographic disparities, and high-risk diagnosis–treatment patterns, supporting data-driven decision-making.</li>
-
-                          <li>Tools: Snowflake, SQL, Streamlit, Snowflake Cortex AI</li>
-                        </ul>
-                      </p>
-                    </div>
+            <div class="project-content">
+                <div class="project-details">
                     <div>
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Impact</h5>
-                      <p>Enabled faster, data-driven insights into medical review outcomes by unifying fragmented IMR data and applying AI-driven text analytics, helping surface overturn drivers, risk patterns, and demographic disparities for improved decision-making.</p>
+                        <h3 class="project-section-title">Project Milestones</h3>
+                        <ul class="project-list">
+                            <li>Problem Assessment: Addressed fragmented Independent Medical Review (IMR) data and limited analytical visibility into overturn trends, fairness, and demographic disparities across medical decisions.</li>
+                            <li>Data Preparation: Ingested and consolidated 19K+ IMR records, performing data cleaning, validation, and structuring to create a reliable foundation for downstream analytics.</li>
+                            <li>Data Modeling & ETL: Designed star-schema data models and automated ETL pipelines using the Snowflake Medallion Architecture (Bronze, Silver, Gold) to enable scalable and auditable analytics.</li>
+                            <li>AI & Advanced Analytics: Applied Snowflake Cortex AI to enrich unstructured clinical text through sentiment analysis, summarization, and semantic search, transforming narrative medical reviews into actionable insights.</li>
+                            <li>Visualization & Insights: Developed interactive Streamlit dashboards to visualize overturn trends, demographic disparities, and high-risk diagnosis–treatment patterns, supporting data-driven decision-making.</li>
+                            <li><strong>Tools:</strong> Snowflake, SQL, Streamlit, Snowflake Cortex AI</li>
+                        </ul>
                     </div>
-                  </div>
+                    <div class="project-impact">
+                        <h3 class="project-section-title">Impact</h3>
+                        <p>Enabled faster, data-driven insights into medical review outcomes by unifying fragmented IMR data and applying AI-driven text analytics, helping surface overturn drivers, risk patterns, and demographic disparities for improved decision-making.</p>
+                    </div>
                 </div>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-7"><img class="img-fluid" src="assets/img/projects/datawarehouse.jpeg" alt="" />
-                <a class="text-white" target="_blank" href="https://github.com/Nandini887/Medical-Review-Analytics-Platform---Snowflake-and-Streamlit"><button class="btn btn-primary btn-l lh-xl my-md-3 mt-2 w-100 w-md-25">View Project</button></a>
-                <a class="text-white" target="_blank" href="https://github.com/Nandini887/Medical-Review-Analytics-Platform---Snowflake-and-Streamlit/blob/main/HW3_Team_QueryQuest.pdf"><button class="btn btn-primary btn-l lh-xl my-md-3 mt-2 w-100 w-md-25">Report</button></a>
-              </div>
+                <div class="project-visual">
+                    <div class="project-image">
+                        <img src="assets/img/projects/datawarehouse.jpeg" alt="Medical Review Data Warehouse">
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/Nandini887/Medical-Review-Analytics-Platform---Snowflake-and-Streamlit" target="_blank" class="btn">View Project</a>
+                        <a href="https://github.com/Nandini887/Medical-Review-Analytics-Platform---Snowflake-and-Streamlit/blob/main/HW3_Team_QueryQuest.pdf" target="_blank" class="btn">Report</a>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <!-- project 1 final ends here-->  
-
-            <!-- project 2 final starts here-->
-            <div class="row align-items-center">
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <h2 class="fs-4 fs-lg-5 fw-bold mb-2 text-center text-lg-start">Trend Classification and Concept Drift Analysis in TikTok & YouTube Data</h2>
-                <h5 class="fs-8 fw-bold lh-lg mb-1">December 2025</h5>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-5">
-                <div class="row justify-content-center justify-content-lg-start">
-                  <div class="col-12">
-                    <div class="mb-x1 mb-lg-3">
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Project Milestones</h5>
-                      <p class="mb-0 lh-xl">
-                        <ul>
+        <!-- Project 2 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">Trend Classification and Concept Drift Analysis in TikTok & YouTube Data</h2>
+                <p class="project-date">December 2025</p>
+            </div>
+            <div class="project-content">
+                <div class="project-details">
+                    <div>
+                        <h3 class="project-section-title">Project Milestones</h3>
+                        <ul class="project-list">
                             <li>Problem: Engagement patterns on TikTok and YouTube evolve rapidly, causing concept drift that degrades ML model performance and reduces accuracy in classifying trending vs non-trending videos.</li>
-
                             <li>Approach: Developed a concept drift detection framework to classify videos as trending or non-trending while monitoring non-stationary engagement data and proactively identifying model performance degradation.</li>
-
                             <li>Modeling: Trained and benchmarked multiple ML approaches, including streaming/incremental models, adaptive ensemble methods (Adaptive XGBoost, Gradient Boosting), and temporal neural networks.</li>
-
                             <li>Validation: Applied rolling-window validation and Population Stability Index (PSI) to detect temporal drift and quantify shifts in feature and prediction distributions.</li>
-
                             <li>Results: Identified consistent performance degradation under non-stationary conditions and found adaptive tree-based ensemble models to be more robust to drift than neural networks.</li>
-
                             <li><strong>Tools:</strong> Python (pandas, scikit-learn, river), NumPy, Matplotlib, Seaborn, GitHub</li>
                         </ul>
-                      </p>
                     </div>
-                    <div>
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Impact</h5>
-                      <p>This project demonstrates how combining trend classification with concept drift detection helps maintain reliable predictions in rapidly evolving social media environments. The framework provides a practical approach for proactively monitoring and retraining models to prevent silent performance failures in production systems.</p>
+                    <div class="project-impact">
+                        <h3 class="project-section-title">Impact</h3>
+                        <p>This project demonstrates how combining trend classification with concept drift detection helps maintain reliable predictions in rapidly evolving social media environments. The framework provides a practical approach for proactively monitoring and retraining models to prevent silent performance failures in production systems.</p>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-7"><img class="img-fluid" src="assets/img/projects/conceptdrift.jpg" alt="" />
-                <a class="text-white" target="_blank" href="https://github.com/kcoldicott/AML-Final-Project"><button class="btn btn-primary btn-l lh-xl my-md-3 mt-2 w-100 w-md-25">View Project</button></a>
-                <a class="text-white" target="_blank" href="https://medium.com/@katelyncoldicott/mastering-the-momentum-1b214438f33d"><button class="btn btn-primary btn-l lh-xl my-md-3 mt-2 w-100 w-md-25">Article</button></a>
-              </div>
+                <div class="project-visual">
+                    <div class="project-image">
+                        <img src="assets/img/projects/conceptdrift.jpg" alt="Concept Drift Analysis">
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/kcoldicott/AML-Final-Project" target="_blank" class="btn">View Project</a>
+                        <a href="https://medium.com/@katelyncoldicott/mastering-the-momentum-1b214438f33d" target="_blank" class="btn">Article</a>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <!-- project 2 final ends here-->  
-			
-			<!-- project 3 final starts here-->
-            <div class="row align-items-center">
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <h2 class="fs-4 fs-lg-5 fw-bold mb-2 text-center text-lg-start">MSBA Curriculum vs Industry Skill Demand Analysis</h2>
-                <h5 class="fs-8 fw-bold lh-lg mb-1">October 2025</h5>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-5">
-                <div class="row justify-content-center justify-content-lg-start">
-                  <div class="col-12">
-                    <div class="mb-x1 mb-lg-3">
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Project Milestones</h5>
-                      <p class="mb-0 lh-xl">
-                        <ul>
-
-                          <li>Problem Assessment: Investigated whether top global MSBA programs are effectively teaching the skills currently demanded by employers for Data Analyst, Data Scientist, and Business Analyst roles.</li>
-
-                          <li>Data Collection: Scraped MSBA curriculum content from top U.S. and non-U.S. universities and collected live job postings from Indeed to capture current market skill demand.</li>
-
-                          <li>Text Processing & Feature Extraction: Cleaned and preprocessed unstructured curriculum and job description text, extracting skill features using CountVectorizer and NLP-based techniques.</li>
-
-                          <li>Similarity & Topic Analysis: Applied cosine similarity to quantify curriculum-to-job alignment and used LDA topic modeling to identify dominant skill themes across universities and job roles.</li>
-
-                          <li>Evaluation & Insights: Analyzed alignment gaps, curriculum topic distribution, and ROI comparisons across programs, highlighting mismatches between advertised curricula and real-world job requirements.</li>
-
-                          <li>Tools: Python (pandas, numpy, sklearn, nltk, gensim), CountVectorizer, Cosine Similarity, LDA Topic Modeling, matplotlib, seaborn</li>
-
+        <!-- Project 3 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">MSBA Curriculum vs Industry Skill Demand Analysis</h2>
+                <p class="project-date">October 2025</p>
+            </div>
+            <div class="project-content">
+                <div class="project-details">
+                    <div>
+                        <h3 class="project-section-title">Project Milestones</h3>
+                        <ul class="project-list">
+                            <li>Problem Assessment: Investigated whether top global MSBA programs are effectively teaching the skills currently demanded by employers for Data Analyst, Data Scientist, and Business Analyst roles.</li>
+                            <li>Data Collection: Scraped MSBA curriculum content from top U.S. and non-U.S. universities and collected live job postings from Indeed to capture current market skill demand.</li>
+                            <li>Text Processing & Feature Extraction: Cleaned and preprocessed unstructured curriculum and job description text, extracting skill features using CountVectorizer and NLP-based techniques.</li>
+                            <li>Similarity & Topic Analysis: Applied cosine similarity to quantify curriculum-to-job alignment and used LDA topic modeling to identify dominant skill themes across universities and job roles.</li>
+                            <li>Evaluation & Insights: Analyzed alignment gaps, curriculum topic distribution, and ROI comparisons across programs, highlighting mismatches between advertised curricula and real-world job requirements.</li>
+                            <li><strong>Tools:</strong> Python (pandas, numpy, sklearn, nltk, gensim), CountVectorizer, Cosine Similarity, LDA Topic Modeling, matplotlib, seaborn</li>
                         </ul>
-                      </p>
                     </div>
-                    <div>
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Impact</h5>
-                      <p>The analysis provides data-driven insights into how well MSBA programs align with evolving industry skill demands, helping prospective students and institutions identify curriculum gaps and optimize program positioning in a competitive analytics job market.</p>
+                    <div class="project-impact">
+                        <h3 class="project-section-title">Impact</h3>
+                        <p>The analysis provides data-driven insights into how well MSBA programs align with evolving industry skill demands, helping prospective students and institutions identify curriculum gaps and optimize program positioning in a competitive analytics job market.</p>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-7"><img class="img-fluid" src="assets/img/projects/nlp_msba.jpg" alt="" />
-                <a class="text-white" target="_blank" href="https://github.com/Nandini887/NLP-Driven-Analysis-of-Curriculum-Industry-Skill-Alignment"><button class="btn btn-primary btn-l lh-xl my-md-3 mt-2 w-100 w-md-25">View Project</button></a>
-                <a class="text-white" target="_blank" href="https://github.com/Nandini887/NLP-Driven-Analysis-of-Curriculum-Industry-Skill-Alignment/blob/main/Analytics_For_Unstructured_Data.pdf"><button class="btn btn-primary btn-l lh-xl my-md-3 mt-2 w-100 w-md-25">Report</button></a>
-              </div>
+                <div class="project-visual">
+                    <div class="project-image">
+                        <img src="assets/img/projects/nlp_msba.jpg" alt="MSBA Curriculum Analysis">
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/Nandini887/NLP-Driven-Analysis-of-Curriculum-Industry-Skill-Alignment" target="_blank" class="btn">View Project</a>
+                        <a href="https://github.com/Nandini887/NLP-Driven-Analysis-of-Curriculum-Industry-Skill-Alignment/blob/main/Analytics_For_Unstructured_Data.pdf" target="_blank" class="btn">Report</a>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <!-- project 3 final ends here-->  
-			
-			<!-- project 4 final starts here-->
-            <div class="row align-items-center">
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                <h2 class="fs-4 fs-lg-5 fw-bold mb-2 text-center text-lg-start">Crowdfunding Campaign Analytics with Computer Vision</h2>
-                <h5 class="fs-8 fw-bold lh-lg mb-1">September 2025</h5>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-5">
-                <div class="row justify-content-center justify-content-lg-start">
-                  <div class="col-12">
-                    <div class="mb-x1 mb-lg-3">
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Project Milestones</h5>
-                      <p class="mb-0 lh-xl">
-                        <ul>
-                          <li><strong>Problem Assessment:</strong> Analyzed factors influencing fundraising success on GoFundMe to understand how visual and textual content impacts donation outcomes.</li>
-
-                          <li><strong>Data Collection:</strong> Scraped ~1,000 GoFundMe campaigns from a selected category, collecting campaign images, textual descriptions, funds raised, and campaign duration.</li>
-
-                          <li><strong>Feature Engineering:</strong> Extracted image labels using computer vision APIs and processed unstructured campaign descriptions using NLP techniques to create structured modeling features.</li>
-
-                          <li><strong>Modeling & Evaluation:</strong> Built logistic regression models to classify high- vs low-performing campaigns, comparing predictive performance of image-only, text-only, and combined feature sets using confusion matrices and accuracy metrics.</li>
-
-                          <li><strong>Topic Modeling & Insights:</strong> Applied LDA topic modeling to identify dominant visual and textual themes, analyzing differences between high- and low-fundraising campaigns to derive actionable recommendations.</li>
-
-                          <li><strong>Tools:</strong> Python (pandas, scikit-learn, NLTK), Computer Vision API, NLP, Logistic Regression, LDA Topic Modeling, GitHub</li>
+        <!-- Project 4 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">Crowdfunding Campaign Analytics with Computer Vision</h2>
+                <p class="project-date">September 2025</p>
+            </div>
+            <div class="project-content">
+                <div class="project-details">
+                    <div>
+                        <h3 class="project-section-title">Project Milestones</h3>
+                        <ul class="project-list">
+                            <li>Problem Assessment: Analyzed factors influencing fundraising success on GoFundMe to understand how visual and textual content impacts donation outcomes.</li>
+                            <li>Data Collection: Scraped ~1,000 GoFundMe campaigns from a selected category, collecting campaign images, textual descriptions, funds raised, and campaign duration.</li>
+                            <li>Feature Engineering: Extracted image labels using computer vision APIs and processed unstructured campaign descriptions using NLP techniques to create structured modeling features.</li>
+                            <li>Modeling & Evaluation: Built logistic regression models to classify high- vs low-performing campaigns, comparing predictive performance of image-only, text-only, and combined feature sets using confusion matrices and accuracy metrics.</li>
+                            <li>Topic Modeling & Insights: Applied LDA topic modeling to identify dominant visual and textual themes, analyzing differences between high- and low-fundraising campaigns to derive actionable recommendations.</li>
+                            <li><strong>Tools:</strong> Python (pandas, scikit-learn, NLTK), Computer Vision API, NLP, Logistic Regression, LDA Topic Modeling, GitHub</li>
                         </ul>
-                      </p>
                     </div>
-                    <div>
-                      <h5 class="fs-8 fw-bold lh-lg mb-1">Impact</h5>
-                      <p>Provided data-driven insights into how campaign imagery and narrative content influence fundraising success, helping identify visual and textual themes associated with higher-performing GoFundMe campaigns.</p>
+                    <div class="project-impact">
+                        <h3 class="project-section-title">Impact</h3>
+                        <p>Provided data-driven insights into how campaign imagery and narrative content influence fundraising success, helping identify visual and textual themes associated with higher-performing GoFundMe campaigns.</p>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-12 col-lg-6 col-xl-7"><img class="img-fluid" src="assets/img/projects/campaign.jpg" alt="" />
-                <a class="text-white" target="_blank" href="https://github.com/Nandini887/Predicting-Engagement-in-GoFundMe-Campaigns-Using-Computer-Vision-and-NLP"><button class="btn btn-primary btn-l lh-xl my-md-3 mt-2 w-100 w-md-25">View Project</button></a>
-              </div>
+                <div class="project-visual">
+                    <div class="project-image">
+                        <img src="assets/img/projects/campaign.jpg" alt="Crowdfunding Campaign Analytics">
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://github.com/Nandini887/Predicting-Engagement-in-GoFundMe-Campaigns-Using-Computer-Vision-and-NLP" target="_blank" class="btn">View Project</a>
+                    </div>
+                </div>
             </div>
+        </div>
+
+    </div>
 
             <!-- project 4 final ends here-->   
 			
